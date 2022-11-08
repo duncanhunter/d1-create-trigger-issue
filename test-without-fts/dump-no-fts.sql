@@ -1,0 +1,12 @@
+PRAGMA foreign_keys=OFF;
+-- BEGIN TRANSACTION;
+CREATE TABLE foods (id INTEGER PRIMARY KEY, foodId TEXT NOT NULL UNIQUE, name TEXT NOT NULL UNIQUE, energy INTEGER, water INTEGER, protein INTEGER);
+INSERT INTO foods VALUES(1,'F002258','Cardamom seed, dried, ground',1236,8.3000000000000007105,10.80000000000000071);
+INSERT INTO foods VALUES(2,'F002893','Chilli (chili), dried, ground',1280,10.80000000000000071,13.400000000000000799);
+INSERT INTO foods VALUES(3,'F002963','Cinnamon, dried, ground',1004,10.600000000000000532,4);
+CREATE TABLE foodsSync (id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE);
+INSERT INTO foodsSync VALUES(1,'Cardamom seed, dried, ground');
+INSERT INTO foodsSync VALUES(2,'Chilli (chili), dried, ground');
+INSERT INTO foodsSync VALUES(3,'Cinnamon, dried, ground');
+-- CREATE TRIGGER foodsSync AFTER INSERT ON foods BEGIN INSERT INTO foodsSync (rowid, name) VALUES (new.id, new.name); END;
+-- COMMIT;
